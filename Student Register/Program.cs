@@ -198,8 +198,8 @@ namespace Student_Register
             int studentListOption = Convert.ToInt32("0" + Console.ReadLine());
             switch(studentListOption)
             {
-                case 1:
-                    ListStudent();
+                case 2:
+                    StudentMenu();
                     break;
                 default:
                     ListStudent();
@@ -219,8 +219,8 @@ namespace Student_Register
             int subjectListOption = Convert.ToInt32("0" + Console.ReadLine());
             switch (subjectListOption)
             {
-                case 1:
-                    ListSubject();
+                case 2:
+                    SubjectMenu();
                     break;
                 default:
                     ListSubject();
@@ -240,8 +240,8 @@ namespace Student_Register
             int subjectRegisterListOption = Convert.ToInt32("0" + Console.ReadLine());
             switch (subjectRegisterListOption)
             {
-                case 1:
-                    ListSubjectRegister();
+                case 2:
+                    SubjectRegisterMenu();
                     break;
                 default:
                     ListSubjectRegister();

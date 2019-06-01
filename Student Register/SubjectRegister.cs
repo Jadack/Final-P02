@@ -103,6 +103,5 @@ namespace Student_Register
         {
             return this.subjectRegisterStudents.SearchAndReturn(id);
         }
-        public void Add
     }
 }
