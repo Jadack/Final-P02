@@ -167,6 +167,21 @@ namespace Student_Register
             }
         }
 
+        //Metodos relacionados a SubjectRegisterList
+        public void AddStudentToList(Student newStudent)
+        {
+            this.students.Add(newStudent);
+        }
+        public void PrintIdName()
+        {
+            string mensaje = "{0, -10}{1,-30}";
+            Console.WriteLine("\n" + "\t" + mensaje, "ID:", "Nombre Completo:" + "\n");
+
+            foreach (var student in students)
+            {
+                Console.WriteLine("\t" + mensaje, student.Id, student.FullName);
+            }
+        }
 
     }
 }

@@ -35,7 +35,10 @@ namespace Student_Register
                 return;
             }
         }
-
+        public int getCount()
+        {
+            return this.subjects.Count;
+        }
         public void DeleteSubject()
         {
             if(SubjectHeaderAtributes())
@@ -62,10 +65,6 @@ namespace Student_Register
             lastId++;
         }
 
-        private void AddSubjectToList(Subject newSubject)
-        {
-            this.subjects.Add(newSubject);
-        }
         public void SearchSubject()
         {
             Console.WriteLine("\n ¿Por qué opción desea buscar? \n");
@@ -83,13 +82,13 @@ namespace Student_Register
                     case 1:
                         if (subject.Name.Contains(searchValue))
                         {
-                            searchResults.AddSubjectToList(subject);
+                            searchResults.subjects.Add(subject);
                         }
                         break;
                     case 2:
                         if (subject.Career.Contains(searchValue))
                         {
-                            searchResults.AddSubjectToList(subject);
+                            searchResults.subjects.Add(subject);
                         }
                         break;
                 }
