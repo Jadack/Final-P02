@@ -30,7 +30,7 @@ namespace Student_Register
         }
         public void AddSubjectRegister(SubjectList aSubjectList)
         {
-            if(aSubjectList.getCount() == 0)
+            if (aSubjectList.getCount() == 0)
             {
                 Console.WriteLine("\n *********************************************************");
                 Console.WriteLine("\t Para utilizar esta opcion debe agregar asignaturas.");
@@ -76,12 +76,58 @@ namespace Student_Register
                         aStudentList.PrintListIdNameCareer();
                         Console.WriteLine("Escriba el ID del estudiante que desea agregar al registro de asignatura: ");
                         int idEst = Convert.ToInt32(Console.ReadLine());
-                        
+                        subjectRegister.AddStudentToSubjectRegister(aStudentList.SearchAndReturn(idEst));
+                        return;
                     }
                 }
             }
 
         }
-
+        public void DeleteStudentFromSubjectRegister(StudentList aStudentList)
+        {
+            if (aStudentList.getCount() == 0)
+            {
+                Console.WriteLine("\n *********************************************************");
+                Console.WriteLine("\t No hay datos de estudiante.");
+                Console.WriteLine("\n *********************************************************");
+                return;
+            }
+            else if (this.SubjectRegisterHeaderAtributes())
+            {
+                Console.WriteLine("Escriba el ID del registro de asignatura que desea editar: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+                foreach (var subjectRegister in subjectRegisters)
+                {
+                    if (subjectRegister.Id == id)
+                    {
+                        subjectRegister.DeleteStudentFromRegister();
+                        return;
+                    }
+                }
+            }
+        }
+        public void ListStudentsFromSubjectRegister(StudentList aStudentList)
+        {
+            if (aStudentList.getCount() == 0)
+            {
+                Console.WriteLine("\n *********************************************************");
+                Console.WriteLine("\t No hay datos de estudiante.");
+                Console.WriteLine("\n *********************************************************");
+                return;
+            }
+            else if (this.SubjectRegisterHeaderAtributes())
+            {
+                Console.WriteLine("Escriba el ID del registro de asignatura que desea editar: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+                foreach (var subjectRegister in subjectRegisters)
+                {
+                    if (subjectRegister.Id == id)
+                    {
+                        subjectRegister.ListStudentsFromRegister();
+                        return;
+                    }
+                }
+            }
+        }
     }
 }

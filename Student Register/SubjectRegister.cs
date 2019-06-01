@@ -103,5 +103,17 @@ namespace Student_Register
         {
             return this.subjectRegisterStudents.SearchAndReturn(id);
         }
+        public void AddStudentToSubjectRegister(Student aStudent)
+        {
+            this.subjectRegisterStudents.AddStudentToList(aStudent);
+        }
+        public void DeleteStudentFromRegister()
+        {
+            this.subjectRegisterStudents.DeleteStudent();
+        }
+        public void ListStudentsFromRegister()
+        {
+            this.subjectRegisterStudents.ListStudents();
+        }
     }
 }

@@ -207,6 +207,6 @@ namespace Student_Register
                 Console.WriteLine("\t" + mensaje, student.Id, student.FullName);
             }
         }
-
+        
     }
 }
