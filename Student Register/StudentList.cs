@@ -101,6 +101,31 @@ namespace Student_Register
             }
         }
 
+        public Student SearchAndReturn(int id)
+        {
+            foreach (var student in this.students)
+            {
+                if (student.Id == id)
+                {
+                    return student;
+                }
+            }
+            return null;
+        }
+        public int getCount()
+        {
+            return this.students.Count;
+        }
+        public void PrintListIdNameCareer()
+        {
+            string mensaje = "{0, -10}{1,-30}{2,-10}";
+            Console.WriteLine("\n" + "\t" + mensaje, "ID:", "Nombre Completo:", "Carrera:" + "\n");
+            foreach(var student in students)
+            {
+                Console.WriteLine("\t" + mensaje, student.Id, student.FullName, student.Career);
+            }
+            
+        }
         public void SearchStudent()
         {
             Console.WriteLine("\n ¿Por qué opción desea buscar? \n");

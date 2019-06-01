@@ -11,7 +11,9 @@ namespace Student_Register
         private string classRoom, professor;
         private StudentList subjectRegisterStudents = new StudentList();
         private Subject subject;
-        
+        private static string shortFormat = "{0,-10}{1,-20}{2,-20}{3,-15}";
+
+        public static string ShortFormat { get { return SubjectRegister.shortFormat; } }
         public int Id { get { return this.id; } }
         public string Subject { get { return this.subject.Name; } }
         public string ClassRoom { get { return this.classRoom; } }
@@ -93,6 +95,14 @@ namespace Student_Register
             SetEndeDate();
             SetProfessor();
         }
-
+        public void PrintAtributesShortFormat()
+        {
+            Console.WriteLine("\t" + SubjectRegister.shortFormat, this.id, this.subject.Name, this.professor, this.subjectRegisterStudents.getCount());
+        }
+        public Student SearchAndReturnStudent(int id)
+        {
+            return this.subjectRegisterStudents.SearchAndReturn(id);
+        }
+        public void Add
     }
 }

@@ -64,7 +64,17 @@ namespace Student_Register
             subjects.Add(newSubject);
             lastId++;
         }
-
+        public Subject SearchAndReturn(int id)
+        {
+            foreach (var subject in this.subjects)
+            {
+                if(subject.Id == id)
+                {
+                    return subject;
+                }             
+            }
+            return null;
+        }
         public void SearchSubject()
         {
             Console.WriteLine("\n ¿Por qué opción desea buscar? \n");
