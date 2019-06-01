@@ -104,7 +104,7 @@ namespace Student_Register
                 searchResults.ListSubjects();
             }
         }
-        public void EditSubjectAll()
+        public void EditSubject()
         {
             if (this.SubjectHeaderAtributes())
             {
@@ -122,7 +122,7 @@ namespace Student_Register
                 }
             }
         }
-        public void EditSubjectSelect()
+        public void EditSubjectByField()
         {
             if (this.SubjectHeaderAtributes())
             {
