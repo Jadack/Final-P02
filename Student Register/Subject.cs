@@ -6,6 +6,7 @@ namespace Student_Register
     class Subject
     {
         private int id;
+        private int test;
         private string name, career, code;
         private static string mensajeFullList = "{0, -10}{1,-30}{2,-15}{3,-10}";
 
