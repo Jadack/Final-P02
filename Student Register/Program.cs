@@ -40,6 +40,9 @@ namespace Student_Register
                     case 4:
                         Exit();
                         break;
+                    default:
+                        MainMenu();
+                        break;
                 }
             }
 
@@ -52,6 +55,7 @@ namespace Student_Register
 
             while (studentMenuOption == 0)
             {
+                Console.Clear();
                 Console.WriteLine("\n ***********************************");
                 Console.Write("\t Menú de Opciones");
                 Console.WriteLine("\n ***********************************");
@@ -62,7 +66,7 @@ namespace Student_Register
                 Console.WriteLine(" 5- Buscar Estudiante ");
                 Console.WriteLine(" 6- Volver al Menu Principal");
                 Console.Write("\n Elija una opción: ");
-                studentMenuOption = Convert.ToInt32(Console.ReadLine());
+                studentMenuOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (studentMenuOption)
                 {
                     case 1:
@@ -83,6 +87,9 @@ namespace Student_Register
                     case 6:
                         MainMenu();
                         break;
+                    default:
+                        StudentMenu();
+                        break;
                 }
             }
 
@@ -94,6 +101,7 @@ namespace Student_Register
 
             while (subjectMenuOption == 0)
             {
+                Console.Clear();
                 Console.WriteLine("\n ***********************************");
                 Console.Write("\t Menú de Opciones");
                 Console.WriteLine("\n ***********************************");
@@ -104,7 +112,7 @@ namespace Student_Register
                 Console.WriteLine(" 5- Buscar Asignatura ");
                 Console.WriteLine(" 6- Volver al Menu Principal");
                 Console.Write("\n Elija una opción: ");
-                subjectMenuOption = Convert.ToInt32(Console.ReadLine());
+                subjectMenuOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (subjectMenuOption)
                 {
                     case 1:
@@ -125,13 +133,56 @@ namespace Student_Register
                     case 6:
                         MainMenu();
                         break;
+                    default:
+                        SubjectMenu();
+                        break;
                 }
             }
-
         }
         static void SubjectRegisterMenu()
         {
+            int subjectRegisterMenuOption = 0;
+            Console.Clear();
 
+            while (subjectRegisterMenuOption == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("\n ***********************************");
+                Console.Write("\t Menú de Opciones");
+                Console.WriteLine("\n ***********************************");
+                Console.WriteLine(" 1- Listar Registro de Asignaturas ");
+                Console.WriteLine(" 2- Agregar Registro de Asignatura ");
+                Console.WriteLine(" 3- Editar Registro de Asignatura ");
+                Console.WriteLine(" 4- Borrar Registro de Asignatura ");
+                Console.WriteLine(" 5- Buscar Registro de Asignatura ");
+                Console.WriteLine(" 6- Volver al Menu Principal");
+                Console.Write("\n Elija una opción: ");
+                subjectRegisterMenuOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterMenuOption)
+                {
+                    case 1:
+                        ListSubjectRegister();
+                        break;
+                    case 2:
+                        AddSubjectRegister();
+                        break;
+                    case 3:
+                        EditSubjectRegister();
+                        break;
+                    case 4:
+                        DeleteSubjectRegister();
+                        break;
+                    case 5:
+                        SearchSubjectRegister();
+                        break;
+                    case 6:
+                        MainMenu();
+                        break;
+                    default:
+                        SubjectRegisterMenu();
+                        break;
+                }
+            }
         }
         static void ListStudent()
         {
@@ -144,14 +195,14 @@ namespace Student_Register
             Console.WriteLine("2- Menú Estudiantes");
             Console.Write("\n Elija una opción: ");
 
-            int studentListOption = Convert.ToInt32(Console.ReadLine());
+            int studentListOption = Convert.ToInt32("0" + Console.ReadLine());
             switch(studentListOption)
             {
                 case 1:
                     ListStudent();
                     break;
-                case 2:
-                    StudentMenu();
+                default:
+                    ListStudent();
                     break;
             }
         }
@@ -165,17 +216,37 @@ namespace Student_Register
             Console.WriteLine("2- Menú Asignaturas");
             Console.Write("\n Elija una opción: ");
 
-            int subjectListOption = Convert.ToInt32(Console.ReadLine());
+            int subjectListOption = Convert.ToInt32("0" + Console.ReadLine());
             switch (subjectListOption)
             {
                 case 1:
                     ListSubject();
                     break;
-                case 2:
-                    SubjectMenu();
+                default:
+                    ListSubject();
                     break;
             }
+        }
+        static void ListSubjectRegister()
+        {
+            Console.Clear();
+            // SubjectsRegister;
 
+            Console.WriteLine("\n\n ¿Qué desea hacer? \n");
+            Console.WriteLine("1- Mantenerse en Lista");
+            Console.WriteLine("2- Menú Registro Asignaturas");
+            Console.Write("\n Elija una opción: ");
+
+            int subjectRegisterListOption = Convert.ToInt32("0" + Console.ReadLine());
+            switch (subjectRegisterListOption)
+            {
+                case 1:
+                    ListSubjectRegister();
+                    break;
+                default:
+                    ListSubjectRegister();
+                    break;
+            }
         }
         static void AddStudent()
         {
@@ -190,13 +261,13 @@ namespace Student_Register
                 Console.WriteLine("1- Agregar otro estudiante");
                 Console.WriteLine("2- Menú Estudiantes");
                 Console.Write("\n Elija una opción: ");
-                studentAddOption = Convert.ToInt32(Console.ReadLine());
+                studentAddOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch(studentAddOption)
                 {
                     case 1:
                         AddStudent();
                         break;
-                    case 2:
+                    default:
                         StudentMenu();
                         break;
                 }
@@ -215,14 +286,39 @@ namespace Student_Register
                 Console.WriteLine("1- Agregar otra asignatura");
                 Console.WriteLine("2- Menú Asignaturas");
                 Console.Write("\n Elija una opción: ");
-                subjectAddOption = Convert.ToInt32(Console.ReadLine());
+                subjectAddOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (subjectAddOption)
                 {
                     case 1:
                         AddSubject();
                         break;
-                    case 2:
+                    default:
                         SubjectMenu();
+                        break;
+                }
+            }
+        }
+        static void AddSubjectRegister()
+        {
+            int subjectRegisterAddOption = 1;
+            Console.Clear();
+
+            while (subjectRegisterAddOption == 1)
+            {
+                // SubjectsRegister;
+
+                Console.WriteLine("\n ¿Qué desea hacer? \n");
+                Console.WriteLine("1- Agregar otro Registro de asignatura");
+                Console.WriteLine("2- Menú Registro de Asignaturas");
+                Console.Write("\n Elija una opción: ");
+                subjectRegisterAddOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterAddOption)
+                {
+                    case 1:
+                        AddSubjectRegister();
+                        break;
+                    default:
+                        SubjectRegisterMenu();
                         break;
                 }
             }
@@ -240,13 +336,13 @@ namespace Student_Register
                 Console.WriteLine("1- Editar otro estudiante");
                 Console.WriteLine("2- Menú Estudiantes");
                 Console.Write("\n Elija una opción: ");
-                studentEditOption = Convert.ToInt32(Console.ReadLine());
+                studentEditOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (studentEditOption)
                 {
                     case 1:
                         EditStudent();
                         break;
-                    case 2:
+                    default:
                         StudentMenu();
                         break;
                 }
@@ -265,18 +361,42 @@ namespace Student_Register
                 Console.WriteLine("1- Editar otra asignatura");
                 Console.WriteLine("2- Menú Asignaturas");
                 Console.Write("\n Elija una opción: ");
-                subjectEditOption = Convert.ToInt32(Console.ReadLine());
+                subjectEditOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (subjectEditOption)
                 {
                     case 1:
                         EditSubject();
                         break;
-                    case 2:
+                    default:
                         SubjectMenu();
                         break;
                 }
             }
+        }
+        static void EditSubjectRegister()
+        {
+            int subjectRegisterEditOption = 1;
+            Console.Clear();
 
+            while (subjectRegisterEditOption == 1)
+            {
+                // SubjectsRegister;
+
+                Console.WriteLine("\n ¿Qué desea hacer? \n");
+                Console.WriteLine("1- Editar otro Registro de asignatura");
+                Console.WriteLine("2- Menú Asignaturas");
+                Console.Write("\n Elija una opción: ");
+                subjectRegisterEditOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterEditOption)
+                {
+                    case 1:
+                        EditSubjectRegister();
+                        break;
+                    default:
+                        SubjectRegisterMenu();
+                        break;
+                }
+            }
         }
         static void DeleteStudent()
         {
@@ -290,13 +410,13 @@ namespace Student_Register
                 Console.WriteLine("1- Eliminar otro estudiante");
                 Console.WriteLine("2- Menú Estudiantes");
                 Console.Write("\n Elija una opción: ");
-                studentDeleteOption = Convert.ToInt32(Console.ReadLine());
+                studentDeleteOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (studentDeleteOption)
                 {
                     case 1:
                         DeleteStudent();
                         break;
-                    case 2:
+                    default:
                         StudentMenu();
                         break;
                 }
@@ -316,14 +436,39 @@ namespace Student_Register
                 Console.WriteLine("1- Eliminar otra asignatura");
                 Console.WriteLine("2- Menú Asignaturas");
                 Console.Write("\n Elija una opción: ");
-                subjectDeleteOption = Convert.ToInt32(Console.ReadLine());
+                subjectDeleteOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (subjectDeleteOption)
                 {
                     case 1:
                         DeleteSubject();
                         break;
-                    case 2:
+                    default:
                         SubjectMenu();
+                        break;
+                }
+            }
+        }
+        static void DeleteSubjectRegister()
+        {
+            int subjectRegisterDeleteOption = 1;
+            Console.Clear();
+
+            while (subjectRegisterDeleteOption == 1)
+            {
+                // SubjectsRegister;
+
+                Console.WriteLine("\n ¿Qué desea hacer? \n");
+                Console.WriteLine("1- Eliminar otro Registro asignatura");
+                Console.WriteLine("2- Menú Registro de Asignaturas");
+                Console.Write("\n Elija una opción: ");
+                subjectRegisterDeleteOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterDeleteOption)
+                {
+                    case 1:
+                        DeleteSubjectRegister();
+                        break;
+                    default:
+                        SubjectRegisterMenu();
                         break;
                 }
             }
@@ -340,13 +485,13 @@ namespace Student_Register
                 Console.WriteLine("1- Buscar otro estudiante");
                 Console.WriteLine("2- Menú Estudiantes");
                 Console.Write("\n Elija una opción: ");
-                studentSearchOption = Convert.ToInt32(Console.ReadLine());
+                studentSearchOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (studentSearchOption)
                 {
                     case 1:
                         SearchStudent();
                         break;
-                    case 2:
+                    default:
                         StudentMenu();
                         break;
                 }
@@ -365,14 +510,39 @@ namespace Student_Register
                 Console.WriteLine("1- Buscar otra asignatura");
                 Console.WriteLine("2- Menú Asignaturas");
                 Console.Write("\n Elija una opción: ");
-                subjectSearchOption = Convert.ToInt32(Console.ReadLine());
+                subjectSearchOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch (subjectSearchOption)
                 {
                     case 1:
                         SearchSubject();
                         break;
-                    case 2:
+                    default:
                         SubjectMenu();
+                        break;
+                }
+            }
+        }
+        static void SearchSubjectRegister()
+        {
+            int subjectRegisterSearchOption = 1;
+            Console.Clear();
+
+            while (subjectRegisterSearchOption == 1)
+            {
+                // SubjectsRegister;
+
+                Console.WriteLine("\n ¿Qué desea hacer? \n");
+                Console.WriteLine("1- Buscar otro Registro de asignatura");
+                Console.WriteLine("2- Menú Registro de Asignaturas");
+                Console.Write("\n Elija una opción: ");
+                subjectRegisterSearchOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterSearchOption)
+                {
+                    case 1:
+                        SearchSubjectRegister();
+                        break;
+                    default:
+                        SubjectRegisterMenu();
                         break;
                 }
             }
@@ -384,7 +554,7 @@ namespace Student_Register
             Console.WriteLine("1- Si");
             Console.WriteLine("2- No");
             Console.Write("Elije una opción: ");
-            option = Convert.ToInt32(Console.ReadLine());
+            option = Convert.ToInt32("0" + Console.ReadLine());
             switch (option)
             {
                 case 1:
@@ -394,7 +564,7 @@ namespace Student_Register
                     Console.WriteLine("\n ***********************************");
                     Environment.Exit(1);
                     break;
-                case 2:
+                default:
                     MainMenu();
                     break;
             }
