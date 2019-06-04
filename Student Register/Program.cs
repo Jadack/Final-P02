@@ -395,21 +395,21 @@ namespace Student_Register
                     case 1:
                         Console.Clear();
                         SubjectsRegister.ListStudentsFromSubjectRegister(Students);
-                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
                         Console.ReadLine();
                         EditSubjectRegister();
                         break;
                     case 2:
                         Console.Clear();
                         SubjectsRegister.AddStudentToRegister(Students);
-                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
                         Console.ReadLine();
                         EditSubjectRegister();
                         break;
                     case 3:
                         Console.Clear();
                         SubjectsRegister.DeleteStudentFromSubjectRegister(Students);
-                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
                         Console.ReadLine();
                         EditSubjectRegister();
                         break;
