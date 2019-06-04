@@ -230,7 +230,7 @@ namespace Student_Register
         static void ListSubjectRegister()
         {
             Console.Clear();
-            // SubjectsRegister;
+            SubjectsRegister.ListSubjectRegister();
 
             Console.WriteLine("\n\n ¿Qué desea hacer? \n");
             Console.WriteLine("1- Mantenerse en Lista");
@@ -305,7 +305,7 @@ namespace Student_Register
 
             while (subjectRegisterAddOption == 1)
             {
-                // SubjectsRegister;
+                SubjectsRegister.AddSubjectRegister(Subjects);
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Agregar otro Registro de asignatura");
@@ -375,29 +375,80 @@ namespace Student_Register
         }
         static void EditSubjectRegister()
         {
-            int subjectRegisterEditOption = 1;
+            int subjectRegisterMenuOption = 0;
             Console.Clear();
 
-            while (subjectRegisterEditOption == 1)
+            while (subjectRegisterMenuOption == 0)
             {
-                // SubjectsRegister;
-
-                Console.WriteLine("\n ¿Qué desea hacer? \n");
-                Console.WriteLine("1- Editar otro Registro de asignatura");
-                Console.WriteLine("2- Menú Asignaturas");
+                Console.Clear();
+                Console.WriteLine("\n ***********************************");
+                Console.Write("\t Menú de Opciones");
+                Console.WriteLine("\n ***********************************");
+                Console.WriteLine(" 1- Listar Estudiantes ");
+                Console.WriteLine(" 2- Agregar Estudiantes ");
+                Console.WriteLine(" 3- Borrar Estudiantes ");
+                Console.WriteLine(" 4- Menu Registros de Asignatura");
                 Console.Write("\n Elija una opción: ");
-                subjectRegisterEditOption = Convert.ToInt32("0" + Console.ReadLine());
-                switch (subjectRegisterEditOption)
+                subjectRegisterMenuOption = Convert.ToInt32("0" + Console.ReadLine());
+                switch (subjectRegisterMenuOption)
                 {
                     case 1:
+                        Console.Clear();
+                        SubjectsRegister.ListStudentsFromSubjectRegister(Students);
+                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.ReadLine();
                         EditSubjectRegister();
                         break;
-                    default:
+                    case 2:
+                        Console.Clear();
+                        SubjectsRegister.AddStudentToRegister(Students);
+                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.ReadLine();
+                        EditSubjectRegister();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        SubjectsRegister.DeleteStudentFromSubjectRegister(Students);
+                        Console.WriteLine(" *Presione cualquier tecla para volver al menú* ");
+                        Console.ReadLine();
+                        EditSubjectRegister();
+                        break;
+                    case 4:
+                        Console.Clear();
                         SubjectRegisterMenu();
+                        break;
+                    default:
+                        Console.Clear();
+                        EditSubjectRegister();
                         break;
                 }
             }
         }
+        //static void EditSubjectRegister()
+        //{
+        //    int subjectRegisterEditOption = 1;
+        //    Console.Clear();
+
+        //    while (subjectRegisterEditOption == 1)
+        //    {
+        //        // SubjectsRegister;
+
+        //        Console.WriteLine("\n ¿Qué desea hacer? \n");
+        //        Console.WriteLine("1- Editar otro Registro de asignatura");
+        //        Console.WriteLine("2- Menú Asignaturas");
+        //        Console.Write("\n Elija una opción: ");
+        //        subjectRegisterEditOption = Convert.ToInt32("0" + Console.ReadLine());
+        //        switch (subjectRegisterEditOption)
+        //        {
+        //            case 1:
+        //                EditSubjectRegister();
+        //                break;
+        //            default:
+        //                SubjectRegisterMenu();
+        //                break;
+        //        }
+        //    }
+        //}
         static void DeleteStudent()
         {
             int studentDeleteOption = 1;
@@ -455,7 +506,7 @@ namespace Student_Register
 
             while (subjectRegisterDeleteOption == 1)
             {
-                // SubjectsRegister;
+                SubjectsRegister.DeleteSubjectRegister();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Eliminar otro Registro asignatura");
@@ -529,7 +580,7 @@ namespace Student_Register
 
             while (subjectRegisterSearchOption == 1)
             {
-                // SubjectsRegister;
+                SubjectsRegister.SearchSubjectRegister();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Buscar otro Registro de asignatura");
@@ -573,6 +624,7 @@ namespace Student_Register
         static void Main()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.SetWindowSize(135, 40);
             MainMenu();
         }
     }
