@@ -73,7 +73,7 @@ namespace Student_Register
                         Console.WriteLine("\n Agregar estudiante a registro de asignatura \n");
                         Console.WriteLine("\t Estudiantes disponibles para agregar a registro de asignatura: \n");
                         aStudentList.PrintListIdNameCareer();
-                        Console.WriteLine("Escriba el ID del estudiante que desea agregar al registro de asignatura: ");
+                        Console.Write("\n Escriba el ID del estudiante que desea agregar al registro de asignatura: ");
                         int idEst = Convert.ToInt32(Console.ReadLine());
                         subjectRegister.AddStudentToSubjectRegister(aStudentList.SearchAndReturn(idEst));
                         break;
