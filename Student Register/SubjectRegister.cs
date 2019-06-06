@@ -6,14 +6,16 @@ namespace Student_Register
     class SubjectRegister
     {
         private int id;
-        private List<int> startDate = new List<int>();
-        private List<int> endDate = new List<int>();
+        private List<int> startDate = new List<int>() { 0, 0, 0};
+        private List<int> endDate = new List<int>() { 0, 0, 0};
         private string classRoom, professor;
         private StudentList subjectRegisterStudents = new StudentList();
         private Subject subject;
         private static string shortFormat = "{0,-10}{1,-20}{2,-20}{3,-15}";
+        private static string longFormat = "{0,-10}{1,-20}{2,-20}{3,-15}{4,-15}{5,-15}";
 
         public static string ShortFormat { get { return SubjectRegister.shortFormat; } }
+        public static string LongFormat { get { return SubjectRegister.longFormat; } }
         public int Id { get { return this.id; } }
         public string Subject { get { return this.subject.Name; } }
         public string ClassRoom { get { return this.classRoom; } }
@@ -45,7 +47,7 @@ namespace Student_Register
         }
         public void SetEndeDate()
         {
-            SetDate("Fecha de finalizacion: ", this.startDate);
+            SetDate("Fecha de finalizacion: ", this.endDate);
         }
         public void SetClassroom()
         {
@@ -86,7 +88,9 @@ namespace Student_Register
                 }
                 else { numbers += Convert.ToString(number); }
             }
-            dateList = dayMonthYear;
+            dateList[0] = dayMonthYear[0];
+            dateList[1] = dayMonthYear[1];
+            dateList[2] = dayMonthYear[2];
         }
         public void SetAtributes(int newId)
         {
@@ -98,6 +102,10 @@ namespace Student_Register
         public void PrintAtributesShortFormat()
         {
             Console.WriteLine("\t" + SubjectRegister.shortFormat, this.id, this.subject.Name, this.professor, this.subjectRegisterStudents.getCount());
+        }
+        public void PrintAtributesLongFormat()
+        {
+            Console.WriteLine("\t" + SubjectRegister.longFormat, this.id, this.subject.Name, this.professor, this.subjectRegisterStudents.getCount(), this.StartDateString(), this.EndDateString());
         }
         public Student SearchAndReturnStudent(int id)
         {

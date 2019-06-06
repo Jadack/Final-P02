@@ -89,7 +89,7 @@ namespace Student_Register
                 }
 
                 Console.Write("\n Escriba el ID del estudiante que desea eliminar: ");
-                int id = Convert.ToInt32(Console.ReadLine()); ;
+                int id = Convert.ToInt32(Console.ReadLine());
                 foreach (var student in students)
                 {
                     if (student.Id == id)
