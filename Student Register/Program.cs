@@ -1,14 +1,130 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Student_Register
 {
     class Program
     {
-        static StudentList Students = new StudentList();
-        static SubjectList Subjects = new SubjectList();
-        static SubjectRegisterList SubjectsRegister = new SubjectRegisterList();
-        
+        static StudentList Students;
+        static SubjectList Subjects;
+        static SubjectRegisterList SubjectsRegister;
+
+        //Funciones nuevas para serializar/deserializar
+
+        static void ClearRegisterObjects() //Limpia objetos y guarda los cambios
+        {
+            Students = new StudentList();
+            Subjects = new SubjectList();
+            SubjectsRegister = new SubjectRegisterList();
+            Serialize();
+
+        }
+        static void DeserializeStudents() //Deserializa el objeto Students 
+        {
+            try
+            {
+                using (Stream stream = File.Open("studentsBinary.bin", FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+
+                    Students = (StudentList)bin.Deserialize(stream);
+                }
+            }
+            catch (IOException)
+            {
+                Students = new StudentList();
+            }
+        }
+        static void DeserializeSubjects() //Deserializa el objeto Subjects
+        {
+            try
+            {
+                using (Stream stream = File.Open("subjectsBinary.bin", FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+
+                    Subjects = (SubjectList)bin.Deserialize(stream);
+                }
+            }
+            catch (IOException)
+            {
+                Subjects = new SubjectList();
+            }
+        }
+
+        static void DeserializeSubjectsRegister() //Deserializa el objeto SubjectsRegister
+        {
+            try
+            {
+                using (Stream stream = File.Open("subjectRegisterBinary.bin", FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+
+                    SubjectsRegister = (SubjectRegisterList)bin.Deserialize(stream);
+                }
+            }
+            catch (IOException)
+            {
+                SubjectsRegister = new SubjectRegisterList();
+            }
+        }
+        static void Deserialize() //Funcion unificada deserializar para iniciar el programa
+        {
+            DeserializeStudents();
+            DeserializeSubjects();
+            DeserializeSubjectsRegister();
+        }
+
+        // Se debe incluir la funcion serializar correspondiente despues de invocar un metodo que hace cambios
+        // sobre los objetos Students, Subjects, SubjectsRegister
+        static void SerializeStudents() //Serializa el objeto Students
+        {
+            try
+            {
+                using (Stream stream = File.Open("studentsBinary.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, Students);
+                }
+            }
+            catch (IOException) { }            
+        }
+        static void SerializeSubjects() //Serializa el objeto Subjects
+        {
+            try
+            {
+                using (Stream stream = File.Open("subjectsBinary.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, Subjects);
+                }
+            }
+            catch (IOException) { }
+        }
+        static void SerializeSubjectsRegister() //Serializa el objeto SubjectsRegister
+        {
+            try
+            {
+                using (Stream stream = File.Open("subjectRegisterBinary.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, SubjectsRegister);
+                }
+            }
+            catch (IOException) { }
+        }
+        static void Serialize()
+        {
+            SerializeStudents();
+            SerializeSubjects();
+            SerializeSubjectsRegister();  
+        }
+
+        // ********************************
+
+
         static void MainMenu()
         {
             int menuOption = 0;
@@ -256,6 +372,7 @@ namespace Student_Register
             while (studentAddOption == 1)
             {
                 Students.AddStudent();
+                SerializeStudents();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Agregar otro estudiante");
@@ -281,6 +398,7 @@ namespace Student_Register
             while (subjectAddOption == 1)
             {
                 Subjects.AddSubject();
+                SerializeSubjects();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Agregar otra asignatura");
@@ -306,6 +424,7 @@ namespace Student_Register
             while (subjectRegisterAddOption == 1)
             {
                 SubjectsRegister.AddSubjectRegister(Subjects);
+                SerializeSubjectsRegister();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Agregar otro Registro de asignatura");
@@ -331,6 +450,7 @@ namespace Student_Register
             while (studentEditOption == 1)
             {
                 Students.EditStudent();
+                SerializeStudents();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Editar otro estudiante");
@@ -356,6 +476,7 @@ namespace Student_Register
             while(subjectEditOption == 1)
             {
                 Subjects.EditSubject();
+                SerializeSubjects();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Editar otra asignatura");
@@ -396,21 +517,23 @@ namespace Student_Register
                         Console.Clear();
                         SubjectsRegister.ListStudentsFromSubjectRegister(Students);
                         Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         EditSubjectRegister();
                         break;
                     case 2:
                         Console.Clear();
                         SubjectsRegister.AddStudentToRegister(Students);
+                        SerializeSubjectsRegister();
                         Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         EditSubjectRegister();
                         break;
                     case 3:
                         Console.Clear();
                         SubjectsRegister.DeleteStudentFromSubjectRegister(Students);
+                        SerializeSubjectsRegister();
                         Console.WriteLine("\n \n *Presione cualquier tecla para volver al menú* ");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         EditSubjectRegister();
                         break;
                     case 4:
@@ -456,6 +579,7 @@ namespace Student_Register
             while (studentDeleteOption == 1)
             {
                 Students.DeleteStudent();
+                SerializeStudents();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Eliminar otro estudiante");
@@ -482,6 +606,7 @@ namespace Student_Register
             while (subjectDeleteOption == 1)
             {
                 Subjects.DeleteSubject();
+                SerializeSubjects();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Eliminar otra asignatura");
@@ -507,6 +632,7 @@ namespace Student_Register
             while (subjectRegisterDeleteOption == 1)
             {
                 SubjectsRegister.DeleteSubjectRegister();
+                SerializeSubjectsRegister();
 
                 Console.WriteLine("\n ¿Qué desea hacer? \n");
                 Console.WriteLine("1- Eliminar otro Registro asignatura");
@@ -623,6 +749,8 @@ namespace Student_Register
         }
         static void Main()
         {
+            Deserialize(); //Extrae datos de los archivos .bin correspondientes a 
+                           //los objetos Students, Subjects y SubjectsRegister para iniciar el programa
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.SetWindowSize(135, 40);
             MainMenu();

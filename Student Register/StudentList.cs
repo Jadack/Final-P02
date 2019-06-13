@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Student_Register
 {
+    [Serializable()]
     class StudentList
     {
         private List<Student> students = new List<Student>();

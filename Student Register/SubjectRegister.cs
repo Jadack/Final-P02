@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Student_Register
 {
+    [Serializable()]
     class SubjectRegister
     {
         private int id;
@@ -12,7 +13,7 @@ namespace Student_Register
         private StudentList subjectRegisterStudents = new StudentList();
         private Subject subject;
         private static string shortFormat = "{0,-10}{1,-20}{2,-20}{3,-15}";
-        private static string longFormat = "{0,-10}{1,-20}{2,-20}{3,-15}{4,-15}{5,-15}";
+        private static string longFormat = "{0,-10}{1,-20}{2,-20}{3,-15}{4,-15}{5,-15}{6,-15}";
 
         public static string ShortFormat { get { return SubjectRegister.shortFormat; } }
         public static string LongFormat { get { return SubjectRegister.longFormat; } }
@@ -98,6 +99,7 @@ namespace Student_Register
             SetStartDate();
             SetEndeDate();
             SetProfessor();
+            SetClassroom();
         }
         public void PrintAtributesShortFormat()
         {
@@ -105,7 +107,7 @@ namespace Student_Register
         }
         public void PrintAtributesLongFormat()
         {
-            Console.WriteLine("\t" + SubjectRegister.longFormat, this.id, this.subject.Name, this.professor, this.subjectRegisterStudents.getCount(), this.StartDateString(), this.EndDateString());
+            Console.WriteLine("\t" + SubjectRegister.longFormat, this.id, this.subject.Name, this.professor, this.subjectRegisterStudents.getCount(), this.StartDateString(), this.EndDateString(), this.classRoom);
         }
         public Student SearchAndReturnStudent(int id)
         {

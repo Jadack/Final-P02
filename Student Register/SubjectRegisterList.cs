@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Student_Register
 {
+    [Serializable()]
     class SubjectRegisterList
     {
         private List<SubjectRegister> subjectRegisters = new List<SubjectRegister>();
@@ -167,7 +168,7 @@ namespace Student_Register
             }
             else
             {
-                Console.WriteLine("\n" + "\t" + SubjectRegister.LongFormat, "ID:", "Asignatura:", "Profesor:", "Cantidad de estudiantes:", "Fecha de Inicio:", "Fecha Finalización" + "\n");
+                Console.WriteLine("\n" + "\t" + SubjectRegister.LongFormat, "ID:", "Asignatura:", "Profesor:", "Cantidad de estudiantes:", "Fecha de Inicio:", "Fecha Finalización:", "Aula:" + "\n");
                 foreach (var subjectRegister in subjectRegisters)
                 {
                     subjectRegister.PrintAtributesLongFormat();
