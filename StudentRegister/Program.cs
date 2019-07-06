@@ -139,7 +139,8 @@ namespace Student_Register
                 Console.WriteLine(" 1- Estudiantes ");
                 Console.WriteLine(" 2- Asignaturas ");
                 Console.WriteLine(" 3- Registro de Asignaturas ");
-                Console.WriteLine(" 4- Salir ");
+                Console.WriteLine(" 4- Eliminar Base de Datos ");
+                Console.WriteLine(" 5- Salir ");
                 Console.Write("\n Elija una opción: ");
                 menuOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch(menuOption)
@@ -154,6 +155,9 @@ namespace Student_Register
                         SubjectRegisterMenu();
                         break;
                     case 4:
+                        DropDataBase();
+                        break;
+                    case 5:
                         Exit();
                         break;
                     default:
@@ -547,31 +551,6 @@ namespace Student_Register
                 }
             }
         }
-        //static void EditSubjectRegister()
-        //{
-        //    int subjectRegisterEditOption = 1;
-        //    Console.Clear();
-
-        //    while (subjectRegisterEditOption == 1)
-        //    {
-        //        // SubjectsRegister;
-
-        //        Console.WriteLine("\n ¿Qué desea hacer? \n");
-        //        Console.WriteLine("1- Editar otro Registro de asignatura");
-        //        Console.WriteLine("2- Menú Asignaturas");
-        //        Console.Write("\n Elija una opción: ");
-        //        subjectRegisterEditOption = Convert.ToInt32("0" + Console.ReadLine());
-        //        switch (subjectRegisterEditOption)
-        //        {
-        //            case 1:
-        //                EditSubjectRegister();
-        //                break;
-        //            default:
-        //                SubjectRegisterMenu();
-        //                break;
-        //        }
-        //    }
-        //}
         static void DeleteStudent()
         {
             int studentDeleteOption = 1;
@@ -722,6 +701,30 @@ namespace Student_Register
                         SubjectRegisterMenu();
                         break;
                 }
+            }
+        }
+        static void DropDataBase()
+        {
+            int option = 0;
+            Console.WriteLine("\n ¿Seguro que quiere eliminar la base de datos? \n");
+            Console.WriteLine("1- Si");
+            Console.WriteLine("2- No");
+            Console.Write("Elije una opción: ");
+            option = Convert.ToInt32("0" + Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.Clear();
+                    ClearRegisterObjects();
+                    Console.WriteLine("\n **************************************************");
+                    Console.Write("\t Base de datos borrada correctamente");
+                    Console.WriteLine("\n **************************************************");
+                    Console.ReadKey();
+                    MainMenu();
+                    break;
+                default:
+                    MainMenu();
+                    break;
             }
         }
         static void Exit()

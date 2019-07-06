@@ -44,7 +44,7 @@ namespace Student_Register
                 Console.WriteLine("\t Asignaturas disponibles para creacion de registro de asignatura: \n");
                 aSubjectList.ListSubjects();
                 Console.Write("\n \n Escriba el ID de la asignatura con que desea crear nuevo registro de asignatura: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 newSubjectRegister.SetSubject(aSubjectList.SearchAndReturn(id));
 
                 newSubjectRegister.SetAtributes(lastId + 1);
@@ -66,7 +66,7 @@ namespace Student_Register
             else if (this.SubjectRegisterHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID del registro de asignatura que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 foreach (var subjectRegister in subjectRegisters)
                 {
                     if (subjectRegister.Id == id)
@@ -75,7 +75,7 @@ namespace Student_Register
                         Console.WriteLine("\t Estudiantes disponibles para agregar a registro de asignatura: \n");
                         aStudentList.PrintListIdNameCareer();
                         Console.Write("\n Escriba el ID del estudiante que desea agregar al registro de asignatura: ");
-                        int idEst = Convert.ToInt32(Console.ReadLine());
+                        int idEst = Convert.ToInt32("0" + Console.ReadLine());
                         subjectRegister.AddStudentToSubjectRegister(aStudentList.SearchAndReturn(idEst));
                         break;
                     }
@@ -95,7 +95,7 @@ namespace Student_Register
             else if (this.SubjectRegisterHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID del registro de asignatura que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 foreach (var subjectRegister in subjectRegisters)
                 {
                     if (subjectRegister.Id == id)
@@ -124,7 +124,7 @@ namespace Student_Register
                 }
 
                 Console.Write("\n Escriba el ID del registro que desea eliminar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 foreach (var registers in subjectRegisters)
                 {
                     if (registers.Id == id)
@@ -147,7 +147,7 @@ namespace Student_Register
             else if (this.SubjectRegisterHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID del registro de asignatura que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 foreach (var subjectRegister in subjectRegisters)
                 {
                     if (subjectRegister.Id == id)
@@ -182,7 +182,7 @@ namespace Student_Register
             Console.WriteLine("2- Por Asignatura");
             Console.WriteLine("3- Por Profesor");
             Console.Write("Elija una opción: ");
-            int sOpt = Convert.ToInt32(Console.ReadLine());
+            int sOpt = Convert.ToInt32("0" + Console.ReadLine());
             Console.Write("Digite el valor de busqueda: ");
             string searchValue = Console.ReadLine();
             bool flagSearch = true;

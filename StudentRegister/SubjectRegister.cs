@@ -13,7 +13,7 @@ namespace Student_Register
         private StudentList subjectRegisterStudents = new StudentList();
         private Subject subject;
         private static string shortFormat = "{0,-10}{1,-20}{2,-20}{3,-15}";
-        private static string longFormat = "{0,-10}{1,-20}{2,-20}{3,-15}{4,-15}{5,-15}{6,-15}";
+        private static string longFormat = "{0,-10}{1,-20}{2,-20}{3,-30}{4,-20}{5,-25}{6,-20}";
 
         public static string ShortFormat { get { return SubjectRegister.shortFormat; } }
         public static string LongFormat { get { return SubjectRegister.longFormat; } }

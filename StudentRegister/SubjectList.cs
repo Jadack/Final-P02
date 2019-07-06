@@ -45,7 +45,7 @@ namespace Student_Register
             if(SubjectHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID de la asignatura que desea eliminar: ");
-                int id = Convert.ToInt32(Console.ReadLine()); ;
+                int id = Convert.ToInt32("0" + Console.ReadLine()); ;
                 foreach (var subject in subjects)
                 {
                     if (subject.Id == id)
@@ -82,7 +82,7 @@ namespace Student_Register
             Console.WriteLine("1- Por Nombre");
             Console.WriteLine("2- Por Carrera");
             Console.Write("Elija una opción: ");
-            int sOpt = Convert.ToInt32(Console.ReadLine());
+            int sOpt = Convert.ToInt32("0" + Console.ReadLine());
             Console.Write("Digite el valor de busqueda: ");
             string searchValue = Console.ReadLine();
             SubjectList searchResults = new SubjectList();
@@ -120,7 +120,7 @@ namespace Student_Register
             if (this.SubjectHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID de la asignatura que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
 
                 Console.WriteLine("\n Ingrese los nuevos datos de la asignatura \n");
                 foreach (var subject in subjects)
@@ -138,7 +138,7 @@ namespace Student_Register
             if (this.SubjectHeaderAtributes())
             {
                 Console.Write("\n Escriba el ID de la asignatura que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
 
                 Console.WriteLine("\n Ingrese los nuevos datos de la asignatura \n");
                 foreach (var subject in subjects)

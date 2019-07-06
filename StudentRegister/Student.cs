@@ -14,6 +14,7 @@ namespace Student_Register
 
         //metodos Get
         public int Id { get { return this.id; } }
+ 
         public string FullName { get { return this.fullName; } }
         public string DocumentNumber { get { return this.documentNumber; } }
         public string Career { get { return this.career; } }

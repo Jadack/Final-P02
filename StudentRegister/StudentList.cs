@@ -56,7 +56,7 @@ namespace Student_Register
                 }
 
                 Console.Write("\n Escriba el ID del estudiante que desea editar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
 
                 Console.WriteLine("\n Ingrese los nuevos datos del estudiante \n");
                 foreach (var student in students)
@@ -90,7 +90,7 @@ namespace Student_Register
                 }
 
                 Console.Write("\n Escriba el ID del estudiante que desea eliminar: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+                int id = Convert.ToInt32("0" + Console.ReadLine());
                 foreach (var student in students)
                 {
                     if (student.Id == id)
@@ -134,7 +134,7 @@ namespace Student_Register
             Console.WriteLine("2- Por Nombre");
             Console.WriteLine("3- Por Carrera");
             Console.Write("Elija una opción: ");
-            int sOpt = Convert.ToInt32(Console.ReadLine());
+            int sOpt = Convert.ToInt32("0" + Console.ReadLine());
             Console.Write("Digite el valor de busqueda: ");
             string searchValue = Console.ReadLine();
             bool flagSearch = true;

@@ -8,7 +8,7 @@ namespace Student_Register
     {
         private int id;
         private string name, career, code;
-        private static string mensajeFullList = "{0, -10}{1,-30}{2,-15}{3,-10}";
+        private static string mensajeFullList = "{0, -10}{1,-30}{2,-30}{3,-20}";
 
         //Metodos Get
         public int Id { get { return this.id; } }
