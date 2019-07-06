@@ -4,22 +4,22 @@ using System.Collections.Generic;
 namespace Student_Register
 {
     [Serializable()]
-    class Student
+    public class Student
     {
         private int id;
         private string fullName, documentNumber, career, phone, email;
         private List<int> birthDateList;
         private static string mensajeFullList = "{0, -10}{1,-30}{2,-15}{3,-15}{4,-10}{5,-30}{6,-10}";
-
+        public List<int> BirthDateList { get { return birthDateList; } set { birthDateList = value;  } }
 
         //metodos Get
-        public int Id { get { return this.id; } }
+        public int Id { get { return this.id; } set { id = value; } }
  
-        public string FullName { get { return this.fullName; } }
-        public string DocumentNumber { get { return this.documentNumber; } }
-        public string Career { get { return this.career; } }
-        public string Phone { get { return this.phone; } }
-        public string Email { get { return this.email; } }
+        public string FullName { get { return this.fullName; } set { fullName = value; } }
+        public string DocumentNumber { get { return this.documentNumber; } set { documentNumber = value;  } }
+        public string Career { get { return this.career; } set { career = value;  } }
+        public string Phone { get { return this.phone; } set { phone = value; } }
+        public string Email { get { return this.email; } set { email = value;  } }
         public static string MensajeFullList { get { return Student.mensajeFullList; } }
 
         public DateTime BirthDate()

@@ -9,6 +9,16 @@ namespace Student_Register
         private List<Subject> subjects = new List<Subject>();
         private int lastId = 0;
 
+        public List<int> GetIdList()
+        {
+            var idList = new List<int>();
+            foreach (var element in subjects)
+            {
+                idList.Add(element.Id);
+            }
+            return idList;
+        }
+
         private bool SubjectHeaderAtributes()
         {
             if (subjects.Count == 0)

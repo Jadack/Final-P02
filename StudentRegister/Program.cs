@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -36,6 +37,19 @@ namespace Student_Register
             {
                 Students = new StudentList();
             }
+        }
+        static void JsonImport()
+        {
+            var json = System.IO.File.ReadAllText("Files/Template.json");
+            Students = JsonConvert.DeserializeObject<StudentList>(json);
+            SerializeStudents();
+        }
+        static void XmlImport()
+        {
+            var writer = new System.Xml.Serialization.XmlSerializer(typeof(StudentList));
+            StreamReader newtw = new StreamReader("Files/Template.xml");
+            Students = (StudentList)writer.Deserialize(newtw);
+
         }
         static void DeserializeSubjects() //Deserializa el objeto Subjects
         {
@@ -91,6 +105,40 @@ namespace Student_Register
             }
             catch (IOException) { }            
         }
+        static void JsonExport()
+        {
+            string JsonStudents = JsonConvert.SerializeObject(Students);
+            System.IO.File.WriteAllText("Files/Estudiantes.json", JsonStudents);
+        }
+        static void XmlExport()
+        {
+            var writer = new System.Xml.Serialization.XmlSerializer(typeof(StudentList));
+            TextWriter newsw = new StreamWriter("Files/test.xml");
+            writer.Serialize(newsw, Students);
+
+        }
+        static void ExcelExport()
+        {
+            var sub = SubjectsRegister.SearchAndReturnSubjectRegisterForReport();
+            if (sub != null)
+            {
+                FilesReport.ExportExcel(sub);
+            } else
+            {
+                ExcelExport();
+            }
+        }
+        static void PdfExport()
+        {
+            var sub = SubjectsRegister.SearchAndReturnSubjectRegisterForReport();
+            if (sub != null)
+            {
+                FilesReport.ExportPdf(sub);
+            } else
+            {
+                PdfExport();
+            }
+        }
         static void SerializeSubjects() //Serializa el objeto Subjects
         {
             try
@@ -141,6 +189,7 @@ namespace Student_Register
                 Console.WriteLine(" 3- Registro de Asignaturas ");
                 Console.WriteLine(" 4- Eliminar Base de Datos ");
                 Console.WriteLine(" 5- Salir ");
+                Console.WriteLine(" 6- Xml");
                 Console.Write("\n Elija una opción: ");
                 menuOption = Convert.ToInt32("0" + Console.ReadLine());
                 switch(menuOption)

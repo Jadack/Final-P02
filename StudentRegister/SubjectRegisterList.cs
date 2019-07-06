@@ -9,6 +9,45 @@ namespace Student_Register
         private List<SubjectRegister> subjectRegisters = new List<SubjectRegister>();
         private int lastId = 0;
 
+        public List<int> GetIdList()
+        {
+            var idList = new List<int>();
+            foreach (var element in subjectRegisters)
+            {
+                idList.Add(element.Id);
+            }
+            return idList;
+        }
+
+        public SubjectRegister SearchAndReturnSubjectRegisterForReport()
+        {
+            Console.WriteLine("\n Elegir Registro de Asignaturas \n");
+            if (subjectRegisters.Count == 0)
+            {
+                Console.WriteLine("\n ******************************************");
+                Console.Write("\t No posee datos ");
+                Console.WriteLine("\n ******************************************");
+            }
+            else
+            {
+                Console.WriteLine("\n" + "\t" + SubjectRegister.ShortFormat, "ID:", "Asignatura:", "Profesor:", "Cantidad de estudiantes:" + "\n");
+                foreach (var subjectRegister in subjectRegisters)
+                {
+                    subjectRegister.PrintAtributesShortFormat();
+                }
+
+                Console.Write("\n Escriba el ID del registro para generar reporte: ");
+                int id = Convert.ToInt32("0" + Console.ReadLine());
+                foreach (var register in subjectRegisters)
+                {
+                    if (register.Id == id)
+                    {
+                        return register;
+                    }
+                }
+            }
+            return null;
+        }
         private bool SubjectRegisterHeaderAtributes()
         {
             if (subjectRegisters.Count == 0)
@@ -45,12 +84,19 @@ namespace Student_Register
                 aSubjectList.ListSubjects();
                 Console.Write("\n \n Escriba el ID de la asignatura con que desea crear nuevo registro de asignatura: ");
                 int id = Convert.ToInt32("0" + Console.ReadLine());
-                newSubjectRegister.SetSubject(aSubjectList.SearchAndReturn(id));
+                if (aSubjectList.GetIdList().Contains(id))
+                {
+                    newSubjectRegister.SetSubject(aSubjectList.SearchAndReturn(id));
 
-                newSubjectRegister.SetAtributes(lastId + 1);
-                lastId++;
+                    newSubjectRegister.SetAtributes(lastId + 1);
+                    lastId++;
 
-                this.subjectRegisters.Add(newSubjectRegister);
+                    this.subjectRegisters.Add(newSubjectRegister);
+                }
+                else
+                {
+                    Console.WriteLine("Id invalido.");
+                }
             }
         }
 
@@ -76,7 +122,10 @@ namespace Student_Register
                         aStudentList.PrintListIdNameCareer();
                         Console.Write("\n Escriba el ID del estudiante que desea agregar al registro de asignatura: ");
                         int idEst = Convert.ToInt32("0" + Console.ReadLine());
-                        subjectRegister.AddStudentToSubjectRegister(aStudentList.SearchAndReturn(idEst));
+                        if (aStudentList.GetIdList().Contains(idEst))
+                        {
+                            subjectRegister.AddStudentToSubjectRegister(aStudentList.SearchAndReturn(idEst));
+                        }
                         break;
                     }
                 }

@@ -18,9 +18,14 @@ namespace Student_Register
         public static string ShortFormat { get { return SubjectRegister.shortFormat; } }
         public static string LongFormat { get { return SubjectRegister.longFormat; } }
         public int Id { get { return this.id; } }
+        public string Code { get { return subject.Code; } }
         public string Subject { get { return this.subject.Name; } }
         public string ClassRoom { get { return this.classRoom; } }
         public string Professor { get { return this.professor; } }
+        public List<Student> GetStudentList()
+        {
+            return subjectRegisterStudents.GetStudents();
+        }
         public DateTime StartDate()
         {
             return new DateTime(this.startDate[2], this.startDate[1], this.startDate[0]);

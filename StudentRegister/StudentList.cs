@@ -1,13 +1,29 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Student_Register
 {
     [Serializable()]
-    class StudentList
+    public class StudentList
     {
         private List<Student> students = new List<Student>();
         private int lastId = 0;
+
+        public List<Student> GetList { get { return students; } }
+        public int LastId { get { return lastId; } set { lastId = value;  } }
+
+        public List<int> GetIdList()
+        {
+            var idList = new List<int>();
+            foreach (var element in students)
+            {
+                idList.Add(element.Id);
+            }
+            return idList;
+        }
 
         public void ListStudents()
         {
@@ -25,6 +41,11 @@ namespace Student_Register
                     student.PrintAtributes();
                 }
             }
+        }
+
+        public List<Student> GetStudents()
+        {
+            return new List<Student>(students);
         }
 
         public void AddStudent()
